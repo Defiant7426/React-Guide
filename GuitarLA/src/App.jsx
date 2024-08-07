@@ -11,7 +11,7 @@ function App() {
   function addToCard(item){
     const itemExist = carrito.findIndex((guitar)  => guitar.id === item.id) // -1 si no existe el item en el carrito
     if(itemExist >= 0){ // si el item existe en el carrito
-      const newCarrito = carrito.map((guitar) => { // recorro el carrito
+      const newCarrito = carrito.map((guitar) => { // recorro el carrito y la modificacion lo guardo en una copia
         if(guitar.id === item.id){ // si el id del item es igual al id del item que estoy agregando 
           guitar.cantidad++  // incremento la cantidad
           return guitar  // retorno el item con la cantidad incrementada
@@ -28,7 +28,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header 
+        carrito={carrito}
+      />
 
 
       <main className="container-xl mt-5">
