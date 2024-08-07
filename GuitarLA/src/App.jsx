@@ -8,8 +8,6 @@ function App() {
   const [data, setData] = useState(db)
   const [carrito, setCarrito] = useState([])
 
-  console.log(data)
-
   return (
     <>
       <Header />
