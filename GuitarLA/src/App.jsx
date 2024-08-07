@@ -8,6 +8,11 @@ function App() {
   const [data, setData] = useState(db)
   const [carrito, setCarrito] = useState([])
 
+  function addToCard(item){
+    console.log(carrito)
+    setCarrito([...carrito, item])
+  }
+
   return (
     <>
       <Header />
@@ -18,7 +23,12 @@ function App() {
 
         <div className="row mt-5">
           {data.map((guitar) => (
-            <Guitar key={guitar.id} guitar={guitar} setCarrito={setCarrito}/>
+            <Guitar 
+              key={guitar.id} 
+              guitar={guitar} 
+              setCarrito={setCarrito}
+              addToCard={addToCard}
+            />
           ))}
         </div>
       </main>

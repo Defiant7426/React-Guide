@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Guitar({ guitar, setCarrito }) {
+export default function Guitar({ guitar, addToCard }) {
 
   const { id, name, image, description, price } = guitar
    
@@ -21,7 +21,7 @@ export default function Guitar({ guitar, setCarrito }) {
         <button 
           type="button" 
           className="btn btn-dark w-100"
-          onClick={() => setCarrito((carrito) => [...carrito, guitar])}
+          onClick={() => addToCard(guitar)}
           >Agregar al Carrito
         </button>
       </div>
