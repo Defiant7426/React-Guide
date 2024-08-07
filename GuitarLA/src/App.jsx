@@ -9,9 +9,22 @@ function App() {
   const [carrito, setCarrito] = useState([])
 
   function addToCard(item){
-    console.log(carrito)
-    setCarrito([...carrito, item])
-  }
+    const itemExist = carrito.findIndex((guitar)  => guitar.id === item.id) // -1 si no existe el item en el carrito
+    if(itemExist >= 0){ // si el item existe en el carrito
+      const newCarrito = carrito.map((guitar) => { // recorro el carrito
+        if(guitar.id === item.id){ // si el id del item es igual al id del item que estoy agregando 
+          guitar.cantidad++  // incremento la cantidad
+          return guitar  // retorno el item con la cantidad incrementada
+        } else{ // si el id del item no es igual al id del item que estoy agregando
+          return guitar // retorno el item sin modificar
+        }
+      })
+      setCarrito(newCarrito) // actualizo el carrito
+    }
+    else{
+      setCarrito([...carrito, {...item, cantidad: 1}]) // agrego el item al carrito con cantidad 1
+    }
+  } 
 
   return (
     <>
