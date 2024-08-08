@@ -26,10 +26,16 @@ function App() {
     }
   } 
 
+  function removeFromCarrito(id) {
+    const newCarrito = carrito.filter((guitar) => guitar.id !== id) // filtro el carrito para que no contenga el item que quiero eliminar
+    setCarrito(newCarrito) // actualizo el carrito
+  }
+
   return (
     <>
       <Header 
         carrito={carrito}
+        removeFromCarrito={removeFromCarrito}
       />
 
 
