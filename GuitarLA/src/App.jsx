@@ -8,18 +8,12 @@ function App() {
   const [data, setData] = useState(db)
   const [carrito, setCarrito] = useState([])
 
+  const MAX_ITEMS = 5
+
   function addToCard(item){
     const itemExist = carrito.findIndex((guitar)  => guitar.id === item.id) // -1 si no existe el item en el carrito
     if(itemExist >= 0){ // si el item existe en el carrito
-      const newCarrito = carrito.map((guitar) => { // recorro el carrito y la modificacion lo guardo en una copia
-        if(guitar.id === item.id){ // si el id del item es igual al id del item que estoy agregando 
-          guitar.cantidad++  // incremento la cantidad
-          return guitar  // retorno el item con la cantidad incrementada
-        } else{ // si el id del item no es igual al id del item que estoy agregando
-          return guitar // retorno el item sin modificar
-        }
-      })
-      setCarrito(newCarrito) // actualizo el carrito
+      addOneUnitToCarrito(item.id) // agrego una unidad al item
     }
     else{
       setCarrito([...carrito, {...item, cantidad: 1}]) // agrego el item al carrito con cantidad 1
@@ -31,11 +25,37 @@ function App() {
     setCarrito(newCarrito) // actualizo el carrito
   }
 
+  function restOneUnitFromCarrito(id){
+    const newCarrito = carrito.map((guitar) => {
+      if(guitar.id === id){
+        guitar.cantidad--
+        return guitar
+      } else{
+        return guitar
+      }
+    }).filter((guitar) => guitar.cantidad > 0)
+    setCarrito(newCarrito)
+  }
+
+  function addOneUnitToCarrito(id){
+    const newCarrito = carrito.map((guitar) => {
+      if(guitar.id === id && guitar.cantidad < MAX_ITEMS){
+        guitar.cantidad++
+        return guitar
+      } else{
+        return guitar
+      }
+    })
+    setCarrito(newCarrito)
+  }
+
   return (
     <>
       <Header 
         carrito={carrito}
         removeFromCarrito={removeFromCarrito}
+        restOneUnitFromCarrito={restOneUnitFromCarrito}
+        addOneUnitToCarrito={addOneUnitToCarrito}
       />
 
 

@@ -1,6 +1,6 @@
 import { React, useMemo } from 'react'
 
-export default function Header({ carrito, removeFromCarrito }) {
+export default function Header({ carrito, removeFromCarrito, restOneUnitFromCarrito, addOneUnitToCarrito }) {
   // state derivado 
   const isEmpty = useMemo( () => carrito.length === 0, [carrito]) //no se hace render de la aplicacion hasta que cambie el estado de carrito
   // esto hace que "isEmpty" ya no sea una funcion, por lo que podemos llamarlo solo con "isEmpty"
@@ -56,11 +56,19 @@ export default function Header({ carrito, removeFromCarrito }) {
                             <td>{guitar.name}</td>
                             <td className="fw-bold">${guitar.price}</td>
                             <td className="flex align-items-start gap-4">
-                              <button type="button" className="btn btn-dark">
+                              <button 
+                                type="button" 
+                                className="btn btn-dark"
+                                onClick={() => restOneUnitFromCarrito(guitar.id)}
+                              >
                                 -
                               </button>
                               {guitar.cantidad}
-                              <button type="button" className="btn btn-dark">
+                              <button 
+                                type="button" 
+                                className="btn btn-dark"
+                                onClick={() => addOneUnitToCarrito(guitar.id)}
+                              >
                                 +
                               </button>
                             </td>
