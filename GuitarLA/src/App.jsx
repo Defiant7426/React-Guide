@@ -50,6 +50,10 @@ function App() {
     setCarrito(newCarrito)
   }
 
+  function clearCarrito(carrito){
+    setCarrito([])
+  }
+
   return (
     <>
       <Header 
@@ -57,6 +61,7 @@ function App() {
         removeFromCarrito={removeFromCarrito}
         restOneUnitFromCarrito={restOneUnitFromCarrito}
         addOneUnitToCarrito={addOneUnitToCarrito}
+        clearCarrito={clearCarrito}
       />
 
 
