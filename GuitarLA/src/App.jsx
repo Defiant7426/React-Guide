@@ -8,6 +8,7 @@ function App() {
   const [data, setData] = useState(db)
   const [carrito, setCarrito] = useState([])
 
+  const MIN_ITEMS = 0
   const MAX_ITEMS = 5
 
   function addToCard(item){
@@ -33,7 +34,7 @@ function App() {
       } else{
         return guitar
       }
-    }).filter((guitar) => guitar.cantidad > 0)
+    }).filter((guitar) => guitar.cantidad > MIN_ITEMS)
     setCarrito(newCarrito)
   }
 
