@@ -11,6 +11,10 @@ function App() {
   const MIN_ITEMS = 0
   const MAX_ITEMS = 5
 
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }, [carrito])
+
   function addToCard(item){
     const itemExist = carrito.findIndex((guitar)  => guitar.id === item.id) // -1 si no existe el item en el carrito
     if(itemExist >= 0){ // si el item existe en el carrito
@@ -20,7 +24,6 @@ function App() {
       setCarrito([...carrito, {...item, cantidad: 1}]) // agrego el item al carrito con cantidad 1
     }
 
-    saveLocalStorage()
   } 
 
   function removeFromCarrito(id) {
@@ -56,9 +59,7 @@ function App() {
     setCarrito([])
   }
 
-  function saveLocalStorage(){
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-  }
+
 
   return (
     <>
