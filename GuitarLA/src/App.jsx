@@ -19,6 +19,8 @@ function App() {
     else{
       setCarrito([...carrito, {...item, cantidad: 1}]) // agrego el item al carrito con cantidad 1
     }
+
+    saveLocalStorage()
   } 
 
   function removeFromCarrito(id) {
@@ -52,6 +54,10 @@ function App() {
 
   function clearCarrito(carrito){
     setCarrito([])
+  }
+
+  function saveLocalStorage(){
+    localStorage.setItem('carrito', JSON.stringify(carrito))
   }
 
   return (
