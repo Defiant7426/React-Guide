@@ -2,8 +2,14 @@ import { useEffect, useState } from "react"
 import Header from "./components/Header"
 import Guitar from "./components/Guitar"
 import { db }  from "./data/db"
+import useCarrito from "./components/hooks/useCarrito"
 
 function App() {
+
+  const { auth, arreglo } = useCarrito()
+
+  console.log(auth)
+  console.log(arreglo)
 
   const initialCarrito = () => {
     const localStorageCarrito = localStorage.getItem("carrito")
