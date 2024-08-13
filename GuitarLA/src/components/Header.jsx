@@ -1,12 +1,7 @@
-import { React, useMemo } from 'react'
 
-export default function Header({ carrito, removeFromCarrito, restOneUnitFromCarrito, addOneUnitToCarrito, clearCarrito }) {
-  // state derivado 
-  const isEmpty = useMemo( () => carrito.length === 0, [carrito]) //no se hace render de la aplicacion hasta que cambie el estado de carrito
-  // esto hace que "isEmpty" ya no sea una funcion, por lo que podemos llamarlo solo con "isEmpty"
-  // si no se quitan los parentisis puede que no funcione correctamente
-  const carritoTotal = useMemo(() => carrito.reduce((acc, item) => acc + item.price*item.cantidad, 0), [carrito])
 
+export default function Header({ carrito, removeFromCarrito, restOneUnitFromCarrito, addOneUnitToCarrito, clearCarrito, isEmpty, carritoTotal }) {
+  
   return (
     <header className="py-5 header">
       <div className="container-xl">

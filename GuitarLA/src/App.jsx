@@ -12,7 +12,9 @@ function App() {
     removeFromCarrito,
     clearCarrito,
     addOneUnitToCarrito,
-    restOneUnitFromCarrito } = useCarrito()
+    restOneUnitFromCarrito,
+    isEmpty,
+    carritoTotal } = useCarrito()
 
   return (
     <>
@@ -22,6 +24,8 @@ function App() {
         restOneUnitFromCarrito={restOneUnitFromCarrito}
         addOneUnitToCarrito={addOneUnitToCarrito}
         clearCarrito={clearCarrito}
+        isEmpty={isEmpty}
+        carritoTotal={carritoTotal}
       />
 
 

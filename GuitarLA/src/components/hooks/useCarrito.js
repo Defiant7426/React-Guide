@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { db } from "../../data/db.js"
 
 export default function useCarrito() {
@@ -62,6 +62,13 @@ export default function useCarrito() {
     setCarrito([])
   }
 
+  // state derivado 
+  const isEmpty = useMemo( () => carrito.length === 0, [carrito]) //no se hace render de la aplicacion hasta que cambie el estado de carrito
+  // esto hace que "isEmpty" ya no sea una funcion, por lo que podemos llamarlo solo con "isEmpty"
+  // si no se quitan los parentisis puede que no funcione correctamente
+  const carritoTotal = useMemo(() => carrito.reduce((acc, item) => acc + item.price*item.cantidad, 0), [carrito])
+
+
 
   return{
     data, 
@@ -70,7 +77,9 @@ export default function useCarrito() {
     removeFromCarrito,
     clearCarrito,
     addOneUnitToCarrito,
-    restOneUnitFromCarrito
+    restOneUnitFromCarrito,
+    isEmpty,
+    carritoTotal
   }
 }
 
