@@ -5,8 +5,13 @@ import { db }  from "./data/db"
 
 function App() {
 
+  const initialCarrito = () => {
+    const localStorageCarrito = localStorage.getItem("carrito")
+    return localStorageCarrito ? JSON.parse(localStorageCarrito) : []
+  }
+
   const [data, setData] = useState(db)
-  const [carrito, setCarrito] = useState([])
+  const [carrito, setCarrito] = useState(initialCarrito)
 
   const MIN_ITEMS = 0
   const MAX_ITEMS = 5
