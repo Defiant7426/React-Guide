@@ -1,12 +1,14 @@
-
+import { menuItems } from "./data/db"
 
 function App() {
   
+  console.log(menuItems)
 
   return (
     <>
-      <h1>My React and TypeScript App!</h1>
-      <p>It's working!</p>
+      <header className="bg-teal-400 py-5">
+        <h1 className="text-center text-4xl font-black">Calculadora de propinas</h1>
+      </header>
     </>
   )
 }
