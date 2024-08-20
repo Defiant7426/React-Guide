@@ -2,6 +2,7 @@ import type { MenuItem } from '../types';
 
 type MenuItemsProps = {
     item: MenuItem;
+    addItem: (item: MenuItem) => void;
     }
 
 export default function MenuItems({ item }: MenuItemsProps) {
