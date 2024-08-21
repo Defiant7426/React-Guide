@@ -6,8 +6,14 @@ export default function useOrder() {
     const [order, setOrder] = useState<OrderItem[]>([])
 
     const addItem = (item: MenuItem) => {
-        console.log("Agregando item", item)
+        const newItem : OrderItem = {
+            ...item,
+            cantidad: 1
+        }
+        setOrder([...order, newItem])
     }
+
+    console.log(order)
 
 
   return {
