@@ -35,11 +35,11 @@ function App() {
 
           <TipPercentageFormat
             setTip={setTip}
-            tip={tip}
           />
 
           <OrderTotal 
             order={order}
+            tip={tip}
           />
         </div>
       </main>

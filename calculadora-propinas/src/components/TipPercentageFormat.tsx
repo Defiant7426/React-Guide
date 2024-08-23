@@ -20,10 +20,9 @@ const tipOptions = [
 
 type TipPercentageFormatProps = {
     setTip: Dispatch<SetStateAction<number>>;
-    tip: number;
 }
 
-export default function TipPercentageFormat({setTip, tip}: TipPercentageFormatProps) {
+export default function TipPercentageFormat({setTip}: TipPercentageFormatProps) {
   return (
     <div>
         <h3 className="font-black text-2xl">
