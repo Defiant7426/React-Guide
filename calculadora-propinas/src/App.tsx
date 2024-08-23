@@ -33,7 +33,7 @@ function App() {
           />
 
           <OrderTotal 
-          
+            order={order}
           />
         </div>
       </main>
