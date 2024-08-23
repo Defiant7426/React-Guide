@@ -14,9 +14,6 @@ export default function OrderContents({order, removeItem}: OrderContentsProps) {
 
         <div className="space-y-3 mt-10">
             {
-                order.length === 0 ? <p>No hay productos en tu orden</p> : null
-            }
-            {
             order.map((item) => (
                 <div key={item.id} className="flex justify-between items-center border-t border-gray-400 py-5 last-of-type:border-b">
 

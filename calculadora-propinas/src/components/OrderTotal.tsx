@@ -6,10 +6,11 @@ type OrderTotalProps = {
 
         order: OrderItem[];
         tip: number;
+        placeOrder: () => void
 
 }
 
-export default function OrderTotal({order, tip}: OrderTotalProps) {
+export default function OrderTotal({order, tip, placeOrder}: OrderTotalProps) {
 
     const subtotalAmount = useMemo(() => {
         return order.reduce((acc, item) => {
@@ -18,6 +19,8 @@ export default function OrderTotal({order, tip}: OrderTotalProps) {
     }, [order])
 
     const tipAmount = useMemo(() => subtotalAmount * tip, [tip, subtotalAmount])
+
+    const totalAmount = useMemo(() => subtotalAmount + tipAmount, [subtotalAmount, tipAmount])
 
   return (
     <>
@@ -34,14 +37,17 @@ export default function OrderTotal({order, tip}: OrderTotalProps) {
             </p>
 
             <p>Total a Pagar: {' '}
-                <span className="font-black text-lg"> {formatCurrency(subtotalAmount + tipAmount)}</span>
+                <span className="font-black text-lg"> {formatCurrency(totalAmount)}</span>
             </p>
 
         </div>
 
-        <button>
-
-
+        <button
+            className="bg-teal-400 text-white font-black p-3 rounded-lg w-full disabled:opacity-50"
+            disabled={totalAmount === 0}
+            onClick={placeOrder}
+        >
+            Guardar Orden
         </button>
     
     </>

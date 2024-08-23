@@ -20,9 +20,10 @@ const tipOptions = [
 
 type TipPercentageFormatProps = {
     setTip: Dispatch<SetStateAction<number>>;
+    tip: number;
 }
 
-export default function TipPercentageFormat({setTip}: TipPercentageFormatProps) {
+export default function TipPercentageFormat({setTip, tip}: TipPercentageFormatProps) {
   return (
     <div>
         <h3 className="font-black text-2xl">
@@ -37,6 +38,8 @@ export default function TipPercentageFormat({setTip}: TipPercentageFormatProps) 
                     value={option.value} 
                     name="tip" 
                     onChange={(e) => setTip(+e.target.value)}
+                    checked={tip === option.value // verifica si el valor de la propina es igual al valor de la opción
+                    }
                 />
                 <label htmlFor={option.id}>{option.label}</label>
             </div>

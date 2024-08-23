@@ -46,12 +46,18 @@ export default function useOrder() {
         setOrder(updatedOrder.filter((orderItem) => orderItem.cantidad > 0))
     }
 
+    const placeOrder = () => {
+        setOrder([])
+        setTip(0)
+    }
+
 
   return {
     order,
     tip,
     setTip,
     addItem,
-    removeItem
+    removeItem,
+    placeOrder
   }
 }
