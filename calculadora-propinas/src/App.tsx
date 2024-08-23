@@ -6,7 +6,7 @@ import OrderTotal from './components/OrderTotal'
 import TipPercentageFormat from './components/TipPercentageFormat'
 
 function App() {
-  const { order, addItem, removeItem } = useOrder()
+  const { order, addItem, removeItem, tip, setTip } = useOrder()
 
   return (
     <>
@@ -34,7 +34,8 @@ function App() {
           />
 
           <TipPercentageFormat
-            
+            setTip={setTip}
+            tip={tip}
           />
 
           <OrderTotal 

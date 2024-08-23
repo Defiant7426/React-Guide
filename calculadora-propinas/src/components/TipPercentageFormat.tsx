@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 
 const tipOptions = [
     {
@@ -17,7 +18,12 @@ const tipOptions = [
     },
 ]
 
-export default function TipPercentageFormat() {
+type TipPercentageFormatProps = {
+    setTip: Dispatch<SetStateAction<number>>;
+    tip: number;
+}
+
+export default function TipPercentageFormat({setTip, tip}: TipPercentageFormatProps) {
   return (
     <div>
         <h3 className="font-black text-2xl">
@@ -31,6 +37,7 @@ export default function TipPercentageFormat() {
                     id={option.id} 
                     value={option.value} 
                     name="tip" 
+                    onChange={(e) => setTip(+e.target.value)}
                 />
                 <label htmlFor={option.id}>{option.label}</label>
             </div>
