@@ -75,7 +75,7 @@ export default function Form() {
         <input
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer disabled:opacity-50"
-          value={"Guardar comida o ejercicio"}
+          value={activity.category === 1 ? 'Agregar Comida' : 'Agregar Ejercicio'}
           disabled={isValidActivity()}
         >
         
