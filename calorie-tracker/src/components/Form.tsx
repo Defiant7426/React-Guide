@@ -1,5 +1,5 @@
 import { cotegories } from "../data/categories"
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent, FormEvent } from "react"
 import { Activity } from "../types"
 
 export default function Form() {
@@ -25,8 +25,16 @@ export default function Form() {
     return activity.name.trim() === "" || activity.calories <= 0
   }
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault() // Evita que se recargue la página
+    console.log(activity)
+  }
+
   return (
-    <form className="space-y-5 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form 
+      className="space-y-5 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      onSubmit={handleSubmit}
+    >
         <div className="grid grid-cols-1 gap-3 mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
             Categoría
