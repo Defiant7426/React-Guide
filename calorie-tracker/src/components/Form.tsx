@@ -1,18 +1,23 @@
 import { cotegories } from "../data/categories"
-import { useState } from "react"
+import { useState, ChangeEvent } from "react"
+import { Activity } from "../types"
 
 export default function Form() {
 
-  const [activity, setActivity] = useState({
+  const [activity, setActivity] = useState<Activity>({
     category: 2,
     name: "",
     calories: 0
   })
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
+    
+    const isNumberrField = ['category', 'calories'].includes(e.target.id)
+      
+
     setActivity({
       ...activity,
-      [e.target.id]: e.target.value
+      [e.target.id]: isNumberrField ? parseInt(e.target.value) : e.target.value
     })
   }
 
