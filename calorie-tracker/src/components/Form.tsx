@@ -1,6 +1,14 @@
 import { cotegories } from "../data/categories"
+import { useState } from "react"
 
 export default function Form() {
+
+  const [activity, setActivity] = useState({
+    category: 2,
+    name: "",
+    calories: 0
+  })
+
   return (
     <form className="space-y-5 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="grid grid-cols-1 gap-3 mb-4">
@@ -10,6 +18,7 @@ export default function Form() {
             <select
             className="shadow appearance-none border border-slate-300 bg-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="category"
+            value={activity.category}
             >
             {cotegories.map(category=> (
                 <option key={category.id} value={category.id}>
@@ -19,14 +28,15 @@ export default function Form() {
             </select>
         </div>
         <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="calories">
-            Actividades
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            Actividad
             </label>
             <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline p-2"
-            id="activity"
+            id="name"
             type="text"
             placeholder="Ejemplo: Correr 5km"
+            value = {activity.name}
             />
         </div>
 
@@ -39,6 +49,7 @@ export default function Form() {
             id="calories"
             type="name"
             placeholder="Ejemplo: 300 o 500"
+            value = {activity.calories}
             />
         </div>
 
