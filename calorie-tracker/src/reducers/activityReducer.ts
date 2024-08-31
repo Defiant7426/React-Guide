@@ -20,4 +20,5 @@ export const activityReducer = (
     if(action.type === 'save-activity'){
         console.log("Guardando actividad", action.payload.newActivity)
     }
+    return state
 } 
