@@ -1,5 +1,6 @@
 import { cotegories } from "../data/categories"
 import { useState, ChangeEvent, FormEvent, Dispatch } from "react"
+import { v4 as uuidv4 } from 'uuid'
 import { Activity } from "../types"
 import { ActivityActions } from "../reducers/activityReducer"
 
@@ -9,11 +10,14 @@ type FormProps = {
 
 export default function Form({dispatch}: FormProps) {
 
-  const [activity, setActivity] = useState<Activity>({
+  const initialState : Activity = {
+    id: uuidv4(),
     category: 2,
     name: "",
     calories: 0
-  })
+  }
+
+  const [activity, setActivity] = useState<Activity>(initialState)
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     
@@ -33,6 +37,10 @@ export default function Form({dispatch}: FormProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault() // Evita que se recargue la página
     dispatch({ type: 'save-activity', payload: { newActivity: activity } }) // Envia la acción al reducer
+    setActivity({ // Resetea el formulario
+      ...initialState,
+      id: uuidv4(),
+    })
   }
 
   return (
