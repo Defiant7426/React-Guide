@@ -16,7 +16,7 @@ export default function ActivityList({ activities }: ActivityListProp) {
                 <h3 className="text-lg font-bold text-slate-600">{activity.name}</h3>
                 <p className="text-sm text-slate-400">Calorías: {activity.calories}</p>
             </div>
-            <div>
+            <div className="flex space-x-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline cursor-pointer">Editar</button>
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">Eliminar</button>
             </div>
