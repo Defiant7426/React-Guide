@@ -1,4 +1,4 @@
-import { cotegories } from "../data/categories"
+import { categories } from "../data/categories"
 import { useState, ChangeEvent, FormEvent, Dispatch } from "react"
 import { v4 as uuidv4 } from 'uuid'
 import { Activity } from "../types"
@@ -58,9 +58,9 @@ export default function Form({dispatch}: FormProps) {
             value={activity.category}
             onChange={handleChange}
             >
-            {cotegories.map(category=> (
-                <option key={category.id} value={category.id}>
-                {category.name}
+            {categories.map(cat=> (
+                <option key={cat.id} value={cat.id}>
+                {cat.name}
                 </option>
             ))}
             </select>
