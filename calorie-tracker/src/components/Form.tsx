@@ -1,14 +1,15 @@
 import { categories } from "../data/categories"
-import { useState, ChangeEvent, FormEvent, Dispatch } from "react"
+import { useState, ChangeEvent, FormEvent, Dispatch, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid'
 import { Activity } from "../types"
-import { ActivityActions } from "../reducers/activityReducer"
+import { ActivityActions, ActivityState } from "../reducers/activityReducer"
 
 type FormProps = {
-  dispatch: Dispatch<ActivityActions> 
+  dispatch: Dispatch<ActivityActions>,
+  state: ActivityState
 }
 
-export default function Form({dispatch}: FormProps) {
+export default function Form({dispatch, state}: FormProps) {
 
   const initialState : Activity = {
     id: uuidv4(),
@@ -18,6 +19,13 @@ export default function Form({dispatch}: FormProps) {
   }
 
   const [activity, setActivity] = useState<Activity>(initialState)
+
+  useEffect(() => {
+    if(state.activeId) {
+      console.log("Llego aqui")
+      console.log(state.activeId)
+    }
+  }, [state.activeId])
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     
