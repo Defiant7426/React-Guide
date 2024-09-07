@@ -22,8 +22,9 @@ export default function Form({dispatch, state}: FormProps) {
 
   useEffect(() => {
     if(state.activeId) {
-      console.log("Llego aqui")
-      console.log(state.activeId)
+      const selectActivity = state.activities.filter( stateActivity => stateActivity.id === state.activeId)[0]
+
+      setActivity(selectActivity)
     }
   }, [state.activeId])
 

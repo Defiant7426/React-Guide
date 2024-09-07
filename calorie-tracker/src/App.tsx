@@ -7,7 +7,6 @@ function App() {
 
   const [state, dispatch] = useReducer(activityReducer, initialState)
 
-  console.log(state)
 
   return (
     <>
