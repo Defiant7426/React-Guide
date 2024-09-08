@@ -19,6 +19,16 @@ export const activityReducer = (
     action: ActivityActions
 ) => {
     if(action.type === 'save-activity'){
+
+        if(state.activeId){
+            const newActivities = state.activities.map(activity => activity.id === state.activeId ? action.payload.newActivity : activity)
+            return {
+                ...state,
+                activities: newActivities,
+                activeId: ''
+            }
+        }
+
         return { // Retorna el estado actualizado
             ...state,
             activities: [...state.activities, action.payload.newActivity]
