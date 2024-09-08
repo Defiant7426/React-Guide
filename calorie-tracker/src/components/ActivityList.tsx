@@ -16,9 +16,13 @@ export default function ActivityList({ activities, dispatch }: ActivityListProp)
         (category: Activity['category']) => categories.map(cat => cat.id === category ? cat.name : '')
     ,[activities])
 
+    const isEmptyActivities = useMemo(() => activities.length === 0, [activities])
+
   return (
     <>
-    <h2 className="text-4xl font-bold text-slate-600 text-center">Comida y Actividades</h2>
+    <h2 className="text-4xl font-bold text-slate-600 text-center my-5">Comida y Actividades</h2>
+
+    {isEmptyActivities && <p className="text-center text-slate-400">No hay actividades</p>}
 
     {activities.map((activity) => (
         <div key={activity.id} className="px-5 py-3 border-b border-slate-300 flex justify-between items-center">
