@@ -13,7 +13,7 @@ function App() {
   }
   , [state.activities])
 
-  const canRestartApp = () => useMemo(() => state.activities.length > 0, [state.activities])
+  const CanRestartApp = () => useMemo(() => state.activities.length > 0, [state.activities])
 
 
   return (
@@ -26,7 +26,7 @@ function App() {
           <button 
             className="bg-white text-lime-600 px-3 py-1 rounded courser-pointer disabled:opacity-50"
             onClick={() => dispatch({ type: 'restart-activity' })}
-            disabled={!canRestartApp()}
+            disabled={!CanRestartApp()}
           >
             Reiniciar App
           </button>
