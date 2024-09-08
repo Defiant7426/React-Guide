@@ -10,6 +10,9 @@ export default function CalorieTracker({activities}: CalorieTrackerProp) {
     //contadores
     const totalCalories = useMemo(() => activities.reduce((acc, activity) => acc + activity.calories, 0), [activities])
 
+    const caloriesBurned = useMemo(() => activities.filter(activity => activity.category === 2).reduce((acc, activity) => acc + activity.calories, 0), [activities])
+
+
   return (
     <>
     
@@ -19,6 +22,9 @@ export default function CalorieTracker({activities}: CalorieTrackerProp) {
         <p className="text-white font-bold rounded-full grid grid-cols-1 gap-3 text-center">
             <span className="font-black text-6xl text-orange-400">{totalCalories}</span>
             Consumidas</p>
+            <p className="text-white font-bold rounded-full grid grid-cols-1 gap-3 text-center">
+            <span className="font-black text-6xl text-orange-400">{caloriesBurned}</span>
+            Ejercicio</p>
     </div>
     
     </>
